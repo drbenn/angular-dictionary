@@ -1,0 +1,125 @@
+<p class="h3 text-primary"><strong>06</strong> - Directives</p>
+<p>Directives are instructions in the DOM, components are a directive</p>
+<p>The star indicates it is a structural directive</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <!-- PART A - ngIf -->
+      <p>
+        <strong class="text-danger">Part A.</strong>
+        <strong>*ngIf</strong>. ngIf can add or not add something to the DOM,
+        below, by pushing the button below the p tag is added to the DOM because
+        the ngIf value from the relative expression changes from true to false.
+      </p>
+      <button class="btn btn-warning" (click)="onButtonPush()">
+        *ngIf Button Push
+      </button>
+      <p>
+        current status of isButtonPushed:<strong> {{ isButtonPushed }} </strong>
+      </p>
+      <p *ngIf="isButtonPushed === true" class="text-danger">
+        ngIf p element and expression reacting to isButtonPushed changing to
+        true
+      </p>
+      <pre>
+        &#60;p *ngIf= &quot;isButtonPushed === true&quot;&#62;ngIf p element and expression...true&#60;/p&#62;
+      </pre>
+      <hr />
+      <!-- Part B - ngIf w/else -->
+      <p>
+        <strong class="text-danger">Part B.</strong>
+        <strong>*ngIf w/else and ng-template</strong>. If we wanted to see an
+        alternative while waiting for the ngIf to activate
+      </p>
+      <p># is a local reference that can be thought of as a marker</p>
+      <p>
+        ng-template is a component/directive shipping with Angular used to mark
+        places in the DOM
+      </p>
+      <button class="btn btn-warning" (click)="onButtonPushB()">
+        *ngIf Button Push
+      </button>
+      <p
+        *ngIf="isButtonPushedB === true; else noButtonPush"
+        class="text-danger"
+      >
+        ngIf p element and expression reacting to isButtonPushed changing to
+        true
+      </p>
+      <ng-template #noButtonPush>
+        <p class="text-danger" #noButtonPush>
+          The Button has yet to be pushed (result of ngIf else statement)
+        </p>
+      </ng-template>
+      <div class="panel panel-primary">
+        <div class="panel-heading">Code Snip</div>
+        <div class="panel-content mt-4">
+          <img
+            class="center-block img-responsive img-thumbnail"
+            alt="image alt"
+            src="../../assets/img/6B.JPG"
+          />
+        </div>
+      </div>
+      <hr />
+      <!-- Part C - ngStyle -->
+      <p>
+        <strong class="text-danger">Part C.</strong>
+        <strong>ngStyle</strong>. If we wanted to see an alternative while
+        waiting for the ngIf to activate
+      </p>
+      <p>
+        <strong
+          >Attritbute directives dont add or remove elements, they only change
+          the element they were placed on.</strong
+        >
+      </p>
+      <p>
+        A constructor is added, and constructors are called when the component
+        is called
+      </p>
+      <p>ngStyle allows dynamic updating of style</p>
+      <p [ngStyle]="{ backgroundColor: getColor() }">
+        Variable fiftyFifty has rolled a random number 0-1, and the result is
+        {{ fiftyFifty }} than 0.5 resulting in a background color of
+        {{ getColor() }}
+      </p>
+      <p class="text-danger">
+        Reload page to again to try for the other result because the math
+        function is run as a constructor and on load.
+      </p>
+      <pre>
+        &#60;p [ngStyle]= &quot;&#123;backgroundColor: getColor()&#125;&quot;&#62;
+      </pre>
+      <hr />
+      <!-- Part D - ngClass -->
+      <p>
+        <strong class="text-danger">Part D.</strong>
+        <strong>ngClass</strong>. ngClass allows to dynamically add or remove
+        classes
+      </p>
+      <p [ngClass]="{ ngClassColorExample: fiftyFifty === 'higher' }">
+        If var fiftyFifty variable in part C is > .5 (and part C will show
+        yellow background), text below will be color formatted
+      </p>
+      <pre>
+        &#60;p [ngClass]= &quot;&#123;ngClassColorExample: fiftyFifty === 'higher'&#125;&quot;&#62;
+      </pre>
+      <hr />
+      <!-- Part E - ngFor -->
+      <p>
+        <strong class="text-danger">Part E.</strong>
+        <strong>ngFor</strong>. ngClass allows to dynamically add or remove
+        classes
+      </p>
+      <button class="btn btn-warning" (click)="ngForCreateNewLine()">
+        Add new P element with ngFor
+      </button>
+      <p *ngFor="let line of ngForArray">{{ ngForArray }}</p>
+    </div>
+    <pre>
+&#60;p *ngFor= &quot;let line of ngForArray&quot;&#62;&#123;&#123;ngForArray&#125;&#125;&#60;/p&#62; </pre
+    >
+  </div>
+  <hr />
+</div>

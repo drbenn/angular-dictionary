@@ -1,0 +1,213 @@
+<p class="h3 text-primary"><strong>08</strong> - Custom Databinding</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <!-- PART A - Binding Properties to Child Components -->
+      <p>
+        <strong class="text-danger">Part A.</strong>
+        <strong>@Input and Binding Properties to Child Components</strong>
+      </p>
+      <p>
+        <span class="text-info"
+          >The ability to amke your properties bindable from outside, from the
+          parent component, using the child component</span
+        >
+      </p>
+      <p>
+        <app-child-component
+          *ngFor="let item of parentElements"
+          [honey]="item"
+        ></app-child-component>
+        <br />
+      </p>
+
+      <ol class="bg-warning text-info">
+        <strong>
+          <br />
+          <li>
+            In child-component TS - Input imported and used as decorator to
+            define object childComponentElement, this makes the childComponent
+            element available outside of its singular component
+          </li>
+          <br />
+          <li>
+            Child component html provides what will be displayed when the
+            component is called within the parent, which also references the
+            child object definition
+          </li>
+          <br />
+          <li>
+            Within the parent component(custom-databinding), the element
+            parentElements is defined, which is an object has been configured in
+            the form to pass through the childComponentElement defined within
+            the child. No input or special decorator required
+          </li>
+          <br />
+          <li>
+            The parent component html(custom-databinding) includes the following
+            ngFor loop binding the child defined object
+            element(childComponentElement) to the iteration of the array of
+            objects hosted in the parent(custom-databinding)
+          </li>
+          <br />
+          <img
+            class="center-block img-responsive img-thumbnail"
+            alt="image alt"
+            src="../../assets/img/8A.JPG"
+          />
+          <br />
+        </strong>
+      </ol>
+    </div>
+    <hr />
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+          <!-- PART B - Using an Alias -->
+          <p>
+            <strong class="text-danger">Part B.</strong>
+            <strong>Using an Alias</strong>
+          </p>
+          <p>
+            If you want to create an alias of an object for more precise
+            reference outside of the component an alias can be used. 'honey' is
+            the alias used in the example
+          </p>
+          <ol class="bg-warning text-info">
+            <strong>
+              <br />
+              <li>
+                In child-component TS - the 'honey' alias is defined in the ()
+                of the Input decorator
+                <br />
+                <img
+                  class="center-block img-responsive img-thumbnail"
+                  alt="image alt"
+                  src="../../assets/img/8B1.JPG"
+                />
+              </li>
+              <br />
+              <li>
+                In parent custom-databinding html - the 'honey' alias is
+                referened instead of the original name of childComponentElement
+                as the bound parameter.
+                <br />
+                <img
+                  class="center-block img-responsive img-thumbnail"
+                  alt="image alt"
+                  src="../../assets/img/8B2.JPG"
+                />
+              </li>
+              <br />
+            </strong>
+          </ol>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10">
+            <!-- PART C - Using an Alias -->
+            <p>
+              <strong class="text-danger">Part C.</strong>
+              <strong
+                >@Output and Parent Component listening to Child Component then
+                reacting</strong
+              >
+            </p>
+            <p>
+              <span class="text-info"
+                >Allows parent components,using a child component, to listen to
+                events using the event emitter.</span
+              >
+            </p>
+            <p>
+              We have shown pass data from a child component to a parent
+              component which was executed there in part A, now in part C we go
+              in the other direction, emmiting a listenable event from the child
+              TS to the parent TS where then the parent component TS will run
+              code.
+            </p>
+            <p>
+              Moreover once an action has occured, another component will react
+              based on the change. So if I click a button and a popup occurs,
+              the component will react to the change in state that a popup
+              occured, not from the actual click of the button.
+            </p>
+            <ol class="bg-warning text-info">
+              <li>
+                <p>
+                  <strong>Starting from the child component 'cockpit'</strong> -
+                  In cockpit, the html component includes two buttons, one that
+                  on click triggers the function onAddServer, the other triggers
+                  onAddBlueprint. Must import EventEmitter and Output at top.
+                </p>
+                <p>
+                  Create an @Output with an EventEmitter, defining the type of
+                  object being emmitted. The @Output and EventEmitter are
+                  similar to a listener, because they are listening to the
+                  onAdderServer/onAddBlueprint for when they get clicked, so
+                  that the EventEmitters transmit the data outside of the
+                  component.
+                </p>
+                <br />
+                <img
+                  class="center-block img-responsive img-thumbnail"
+                  alt="image alt"
+                  src="../../assets/img/8C1.JPG"
+                />
+
+                <br />
+              </li>
+              <li>
+                <p>
+                  <strong
+                    >In the parent component whose html includes reference to
+                    the child component</strong
+                  >
+                  - We are
+                  <span class="text-info"><strong>EVENT BINDING</strong></span>
+                  to the emmitted events from the child component, serverCreated
+                  and blueprintCreated, in parenthesis seen just the same as the
+                  basic (click) event binding.
+                </p>
+                <p>
+                  The event bounded serverCreated and blueprintCreated listen
+                  for the event, and upon action, their own function
+                  onServerAdded and onBlueprintAdded are executed with the
+                  $event data passing into their own TS function(onServerAdded
+                  and onBlueprintAdded)
+                </p>
+                <br />
+                <img
+                  class="center-block img-responsive img-thumbnail"
+                  alt="image alt"
+                  src="../../assets/img/8C2.JPG"
+                />
+
+                <br />
+              </li>
+              <li>
+                The event data passed from child in the form of
+                'serverCreated'/'blueprintCreated' to the parent function
+                'onServerAdded'/'onBlueprintAdded' is then processed through the
+                parent app component TS.
+                <br />
+                <img
+                  class="center-block img-responsive img-thumbnail"
+                  alt="image alt"
+                  src="../../assets/img/8C3.JPG"
+                />
+
+                <br />
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- BELOW are divs for entire section -->
+    </div>
+  </div>
+</div>
+<hr />

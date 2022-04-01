@@ -1,0 +1,42 @@
+<p class="h3 text-warning"><strong>05</strong> - Databinding Practice</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <p class="h5">Challenge Includes the following:</p>
+      <ol>
+        <li class="text-success">
+          Add an input field which updates a property ('username') via
+          two-way-binding.
+        </li>
+        <li class="text-success">
+          Output the username property via string interpolation in a paragraph
+          below the input.
+        </li>
+        <li class="text-success">
+          Add a button which may only be clicked if the username is NOT an empty
+          string.
+        </li>
+        <li class="text-success">
+          Upon clicking the button, the username should be reset to an empty
+          string.
+        </li>
+      </ol>
+
+      <p class="h4 text-warning">
+        <u>Challenge Results</u>
+      </p>
+      <input type="text" class="form-control" [(ngModel)]="usernameField" />
+      <p>{{ usernameField }}</p>
+      <button
+        type="button"
+        class="btn btn-primary btn-lg"
+        (click)="clearUsername()"
+        [disabled]="usernameField === ''"
+      >
+        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+        Clear Username
+      </button>
+    </div>
+  </div>
+</div>
+<hr />

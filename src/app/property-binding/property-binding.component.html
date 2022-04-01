@@ -1,0 +1,38 @@
+<p class="h3 text-primary"><strong>02</strong> - Property Binding</p>
+<p>
+  constructors are methods executed at the point in time the component is
+  created by Angular
+</p>
+<p>
+  [brackets] indicate property binding, that we want to dynamically bind some
+  property to and expression on the other side of the =
+</p>
+<p>
+  So [property] = "expression", in this case the button property disabled is
+  bound to the expression NOT allowButtonPush, which setsTimeout of two seconds,
+  before expression changes from true to false, which allows the button to be
+  pressed.
+</p>
+<button class="btn btn-danger" [disabled]="!allowButtonPush">
+  Push Button
+</button>
+<p class="text-danger">
+  <strong class="h3">Note:</strong> The only action that will occur is false
+  will turn to true and the button will change from disabled to !disabled.
+  <strong
+    >This occurs after 2 seconds on page load, so there is no interaction after
+    that, the button just becomes clickable</strong
+  >
+</p>
+<p>
+  Showing allowButtonPush value using string interpolation:
+  <span class="text-danger">{{ allowButtonPush }}</span>
+</p>
+<p class="font-weight-light">
+  Showing allowButtonPush value using property binding:
+  <span class="text-danger" [innerText]="allowButtonPush"></span>
+</p>
+<pre>
+  [property]="variable with expression or simply an expression sans variable reference"
+</pre>
+<hr />

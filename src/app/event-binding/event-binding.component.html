@@ -1,0 +1,62 @@
+<p class="h3 text-primary"><strong>03</strong> - Event Binding</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <!-- PART A - SINGLE EVENT -->
+      <p>
+        <strong class="text-danger">Part A.</strong>
+        <strong>One time event.</strong> Click button(event) which activates
+        method onCreateNewLine(), which changes the value of the var
+        newLineCreationStatus displayed via string interpolation below the
+        button.
+      </p>
+      <button class="btn btn-success" (click)="onCreateNewLine()">
+        Create New Line
+      </button>
+      <p>{{ newLineCreationStatus }}</p>
+      <blockquote>
+        <p>
+          <Strong class="text-success">NOTE:</Strong>How do you know to which
+          Properties or Events of HTML Elements you may bind? You can basically
+          bind to all Properties and Events - a good idea is to console.log()
+          the element you're interested in to see which properties and events it
+          offers.
+        </p>
+        <p>
+          Important: For events, you don't bind to onclick but only to click (=>
+          (click)).
+        </p>
+        <p>
+          The MDN (Mozilla Developer Network) offers nice lists of all
+          properties and events of the element you're interested in. Googling
+          for YOUR_ELEMENT properties or YOUR_ELEMENT events should yield nice
+          results.
+        </p>
+      </blockquote>
+      <pre>
+        (click)="onCreateNewLine()" is used within initiating interactive element,
+        the button, where the method updates the string interpolated variable.
+      </pre>
+      <hr />
+
+      <!-- PART B - INTERACTIVE DATA PASSING WITH EVENT BINDING -->
+      <p>
+        <strong class="text-danger">Part B.</strong>
+        <strong>Passing Data With Event Binding.</strong> $event passed as an
+        argument in onUpdateLine is the key to this functionality as it collects
+        and gives access to the event(click or text entry) data.
+      </p>
+      <p>
+        Event passed through method is TS component to dynamically update the
+        line below text box, which the line is shown with string interpolation.
+      </p>
+      <input type="text" class="form-control" (input)="onUpdateLine($event)" />
+      <p class="text-danger">{{ editThisLine }}</p>
+      <pre>
+        (input)="onUpdateLine($event)" is added to the form input.
+        and the method called passes the event argument onUpdateLine(event: any) in TS
+      </pre>
+    </div>
+  </div>
+</div>
+<hr />

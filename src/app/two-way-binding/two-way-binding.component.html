@@ -1,0 +1,45 @@
+<p class="h3 text-primary"><strong>04</strong> - Two Way Binding</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <p>
+        Event binding triggers a change on the event affect another element, say
+        a variable that displays text in a paragraph like above.
+        <strong>However,</strong> two way binding will also update the input
+        element, if changed from somewhere else.
+      </p>
+      <p class="text-warning">
+        This introduces
+        <strong
+          ><span class="text-danger h4"
+            >[( ngModel )]="variable or expression"</span
+          ></strong
+        >
+        which should be used within the interactive element, in this case the
+        interactive element is the form field.
+      </p>
+      <blockquote>
+        <p>
+          <Strong class="text-success">NOTE:</Strong> For Two-Way-Binding to
+          work, you need to enable the ngModel directive. This is done by adding
+          the FormsModule to the imports[] array in the AppModule.
+        </p>
+        <p>
+          You then also need to add the import from @angular/forms in the
+          app.module.ts file:
+        </p>
+        <p>import &#123; FormsModule &#125; from '@angular/forms';</p>
+      </blockquote>
+      <p>{{ textFieldLine }}</p>
+      <input type="text" class="form-control" [(ngModel)]="textFieldLine" />
+      <p class="text-danger">{{ textFieldLine }}</p>
+      <p>
+        So its a circular/interactive loop between the variable and form,
+        prepopulating the field, then updating the variable with the form input.
+        variable value (comes from) Form Default Value (and changing the form
+        text field) updates the variable value-
+      </p>
+    </div>
+  </div>
+</div>
+<hr />

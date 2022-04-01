@@ -1,0 +1,9 @@
+.angular-red {
+  color: rgb(173, 33, 33);
+}
+
+.three-way-grid-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: 1px solid black;
+}

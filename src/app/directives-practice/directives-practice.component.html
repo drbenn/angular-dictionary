@@ -1,0 +1,105 @@
+<p class="h3 text-warning"><strong>07</strong> - Directives Practice</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <p class="h5">Challenge Includes the following:</p>
+      <ol>
+        <li class="bg-success text-success">
+          Add a button which says 'Dsiplay Details'
+        </li>
+        <li class="bg-success text-success">
+          Add a paragraph with any content of your choice(e.g. 'Secret Password
+          = tuna')
+        </li>
+        <li class="bg-success text-success">
+          Toggle the displaying of that paragraph with the button created in the
+          first step
+        </li>
+        <li class="bg-success text-success">
+          Log all button clicks in an array and output that array below the
+          secret paragraph (maybe log a timestamp or simply an incrementing
+          number)
+        </li>
+        <li>
+          <span class="bg-success text-success"
+            >Starting at the 5th log item, give all future items a blue
+            background (via ngStyle) and white color (ngClass)</span
+          >
+          <br />
+        </li>
+      </ol>
+
+      <p class="h4 text-warning">
+        <u>Challenge Results - Using Incrementing Number</u>
+      </p>
+
+      <button class="btn btn-info btn-sm" (click)="onButtonClick()">
+        Display Details
+      </button>
+      <p *ngIf="showSecret">Secret Password = tuna</p>
+
+      <!-- ALTERNATE(NOT as KISS) METHOD TO SHOW Secret Password - but it is nice to maintain a visual field space for the password with ----- -->
+      <!-- <p *ngIf="showSecret === true; else placeHolder">
+        Secret Password = tuna
+      </p>
+      <ng-template #placeHolder>
+        <p class="text-warning" #placeHolder>
+          --------------------------------
+        </p>
+      </ng-template> -->
+      <div
+        *ngFor="let logItem of log"
+        [ngStyle]="{ backgroundColor: logItem >= 5 ? 'blue' : 'transparent' }"
+        [ngClass]="{ whiteText: logItem >= 5 }"
+      >
+        {{ logItem }}
+      </div>
+      <br />
+      <!--Method using Index & Timestamp -->
+      <p class="h4 text-warning">
+        <u>Challenge Results - Using Index and Timestamp</u>
+      </p>
+      <button class="btn btn-info btn-sm" (click)="onButtonClickTimeStamp()">
+        Display Details
+      </button>
+      <p *ngIf="showSecretTimeStamp">Secret Password = tuna</p>
+      <div
+        *ngFor="let logItemTime of logTimeStamp; let i = index"
+        [ngStyle]="{
+          backgroundColor: i >= 4 ? 'blue' : 'transparent'
+        }"
+        [ngClass]="{ whiteText: i >= 4 }"
+      >
+        {{ logItemTime }}
+      </div>
+      <br />
+      <br />
+      <div class="panel panel-primary">
+        <div class="panel-heading">Code Snip</div>
+        <div class="panel-content mt-4">
+          <br />
+          <p class="text-center">
+            The key difference between simple incrementing in top image and use
+            of index on the bottom image
+          </p>
+          <img
+            class="center-block img-responsive img-thumbnail"
+            alt="image alt"
+            src="../../assets/img/7B1.JPG"
+          />
+          <br />
+          <p class="text-center">
+            Is the use of the second let in ngFor...where "let i = index"...and
+            then the use of i to allow formatting
+          </p>
+          <img
+            class="center-block img-responsive img-thumbnail"
+            alt="image alt"
+            src="../../assets/img/7B2.JPG"
+          />
+        </div>
+      </div>
+      <hr />
+    </div>
+  </div>
+</div>
